@@ -1,0 +1,15 @@
+{
+  "uuid": "quicktext@i-bahnasy",
+  "name": "QuickText",
+  "description": "Easily save text entries in the system tray",
+  "version": 1,
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "51"
+  ],
+  "url": "https://github.com/i-bahnasy/QuickText",
+  "settings-schema": "org.gnome.shell.extensions.snippet-vault",
+  "icon-name": "quicktext-symbolic"
+}

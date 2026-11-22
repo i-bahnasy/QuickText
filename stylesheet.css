@@ -1,0 +1,48 @@
+.snippet-vault-box {
+  padding: 8px 12px;
+  min-width: 340px;
+  max-width: 420px;
+}
+
+.snippet-vault-input-row {
+  spacing: 6px;
+  margin-bottom: 4px;
+}
+
+.snippet-vault-entry {
+  min-width: 240px;
+}
+
+.snippet-vault-counter {
+  font-size: 0.85em;
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+
+.snippet-vault-scroll {
+  max-height: 280px;
+}
+
+.snippet-vault-list {
+  spacing: 6px;
+}
+
+.snippet-vault-row {
+  padding: 6px 8px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.06);
+  spacing: 8px;
+}
+
+.snippet-vault-text {
+  y-align: center;
+}
+
+.snippet-vault-btn {
+  padding: 4px 8px;
+}
+
+.snippet-vault-empty {
+  opacity: 0.7;
+  padding: 12px 4px;
+}

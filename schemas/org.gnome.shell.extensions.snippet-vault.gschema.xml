@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.snippet-vault" path="/org/gnome/shell/extensions/snippet-vault/">
+    <key name="entries" type="s">
+      <default>'[]'</default>
+      <summary>Saved text entries as JSON</summary>
+      <description>JSON-encoded array of saved text strings (each up to 200 characters).</description>
+    </key>
+  </schema>
+</schemalist>
