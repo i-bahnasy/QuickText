@@ -1,4 +1,5 @@
 import Clutter from 'gi://Clutter';
+import Gio from 'gi://Gio';
 import Pango from 'gi://Pango';
 import St from 'gi://St';
 
@@ -10,7 +11,7 @@ import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 const MAX_CHARS = 200;
 const MAX_ENTRIES = 30;
 
-export default class SnippetVaultExtension extends Extension {
+export default class QuickTextExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
         this._entries = this._loadEntries();
@@ -18,8 +19,10 @@ export default class SnippetVaultExtension extends Extension {
 
         this._indicator = new PanelMenu.Button(0.0, this.metadata.name, false);
 
+        const iconFile = this.dir.get_child('quicktext-symbolic.svg');
+        const gicon = new Gio.FileIcon({file: iconFile});
         const panelIcon = new St.Icon({
-            icon_name: 'document-edit-symbolic',
+            gicon,
             style_class: 'system-status-icon',
         });
         this._indicator.add_child(panelIcon);
@@ -165,6 +168,7 @@ export default class SnippetVaultExtension extends Extension {
                 y_align: Clutter.ActorAlign.CENTER,
             });
             copyBtn.connect('clicked', () => {
+                // Only writes to the clipboard when the user explicitly clicks Copy.
                 const clipboard = St.Clipboard.get_default();
                 clipboard.set_text(St.ClipboardType.CLIPBOARD, entryText);
             });
@@ -216,13 +220,24 @@ export default class SnippetVaultExtension extends Extension {
         }
         this._signalIds = [];
 
+        this._inputEntry?.destroy();
+        this._inputEntry = null;
+
+        this._addButton?.destroy();
+        this._addButton = null;
+
+        this._counterLabel?.destroy();
+        this._counterLabel = null;
+
+        this._listBox?.destroy();
+        this._listBox = null;
+
+        this._scrollView?.destroy();
+        this._scrollView = null;
+
         this._indicator?.destroy();
         this._indicator = null;
-        this._inputEntry = null;
-        this._addButton = null;
-        this._counterLabel = null;
-        this._scrollView = null;
-        this._listBox = null;
+
         this._entries = null;
         this._settings = null;
     }
